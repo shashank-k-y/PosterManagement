@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+<style>
+
+</style> 
+{% block body-block %}
+
+<!-- <div id="div1">
+<form method="post" action="">
+    <h2>Update your profile here.</h2>
+    {% csrf_token %}
+    {% for field in form %}
+        <p style="justify-content: center;">{{ field.errors }}</p>
+        <p style="justify-content: center;">{{ field.label }} {{ field }}</p>
+        {% if field.help_text %}
+            <p style="justify-content: center;" class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}
+    {% for message in messages %}
+        <p id="message-{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+
+    <input type="submit" name="Update User" value="Submit">
+</form>
+</div> -->
+
+<div id="div1">
+    <form method="post" enctype="multipart/form-data">
+        <h2>Update your profile here</h2>
+        {% csrf_token %}
+        {% if form.errors %}
+            {% for key, value in form.errors.items %}
+                <strong>{{ value }}</strong>
+            {% endfor %}
+        {% endif %}
+        <p>{{form.username.label}}</p>
+            {{ form.username }}
+        <p>{{form.email.label}}</p>
+            {{ form.email }}
+        {% for message in messages %}
+            <p id="message-{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+        <br><br>
+        <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

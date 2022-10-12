@@ -32,7 +32,7 @@ li a:hover {
   background-color: #111;
 }
 
-div{
+#div1{
     top: 50%;
     left: 50%;
     /* width: 30em;
@@ -56,7 +56,7 @@ div{
 
 <ul id="ul1">
   <li id="li1"><a class="active" href="{% url 'home'  %}">Home</a></li>
-  <li id="li1"><a href="{% url 'home'  %}">Profile</a></li>
+  <li id="li1"><a href="{% url 'profile'  %}">Profile</a></li>
   <li id="li-right"><a href="{% url 'staff'  %}">admin?</a></li>
   {% if request.user.is_authenticated %}
     <li id="li-right"><a href="{% url 'logout'  %}">logout</a></li>

@@ -43,8 +43,10 @@ def register(request):
 
 
 def login_page(request):
-    form = forms.LoginForm()
+    if request.user.is_authenticated:
+        return redirect('home')
 
+    form = forms.LoginForm()
     if request.method == "POST":
         form = forms.LoginForm(request.POST)
         if form.is_valid():
@@ -69,3 +71,21 @@ def login_page(request):
 def logout_request(request):
     logout(request)
     return redirect('login')
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = forms.UpdateProfileForm(
+            request.POST, instance=request.user
+        )
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='profile')
+        else:
+            messages.error(request, "something wrong with username or email")
+    else:
+        user_form = forms.UpdateProfileForm(instance=request.user)
+
+    return render(request, 'users/profile.html', {'form': user_form})
