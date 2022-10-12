@@ -1,0 +1,10 @@
+<h1>{{ greetings }}</h1>
+{% if strings %}
+    <ul>
+    {% for word in strings %}
+        <li>{{ word }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

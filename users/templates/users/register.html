@@ -1,0 +1,30 @@
+{% load static %}
+<style>
+div{
+    top: 50%;
+    left: 50%;
+    width: 30em;
+    height: 18em;
+    margin-top: -9em;
+    margin-left: -15em;
+    border: 1px solid #666;
+    background-color: #d7dad6;
+    position: fixed;
+  }
+</style>
+
+<h1>Register</h1>
+<div>
+<form method="POST" action="">
+    {% csrf_token %}
+    {% for field in form %}
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+    {% endfor %}
+
+    <input type="submit" name="Create User" value="Submit">
+</form>
+</div>
