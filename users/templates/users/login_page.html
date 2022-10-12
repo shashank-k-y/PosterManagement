@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+<style>
+
+</style>
+{% block body-block %}
+
+<div>
+<form method="POST" action="">
+    <h1>Login Here</h1>
+    {% csrf_token %}
+    {% for field in form %}
+        <p style="justify-content: center;">{{ field.errors }}</p>
+        <p style="justify-content: center;">{{ field.label }} {{ field }}</p>
+        {% if field.help_text %}
+            <p style="justify-content: center;" class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}
+    {% for message in messages %}
+        <p id="message-{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+
+    <input type="submit" name="Create User" value="Submit">
+    <p>If you dont have an account sign up <a href="{% url 'signup'  %}">here</a>.</p>
+</form>
+</div>
+{% endblock %}

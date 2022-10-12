@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#ul1 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#li1 {
+  float: left;
+  align-content: center;
+}
+
+#li-right {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+div{
+    top: 50%;
+    left: 50%;
+    /* width: 30em;
+    height: 18em; */
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    border: 1px solid #666;
+    position: fixed;
+}
+
+#message-info{
+    color: rgb(248, 35, 89);
+}
+
+#message-success{
+    color: green;
+}
+</style>
+</head>
+<body>
+
+<ul id="ul1">
+  <li id="li1"><a class="active" href="{% url 'home'  %}">Home</a></li>
+  <li id="li1"><a href="{% url 'home'  %}">Profile</a></li>
+  <li id="li-right"><a href="{% url 'staff'  %}">admin?</a></li>
+  {% if request.user.is_authenticated %}
+    <li id="li-right"><a href="{% url 'logout'  %}">logout</a></li>
+    <li id="li-right"><p style="color: white;">Hello {{request.user}}!</p></li>
+  {% else %}
+    <li id="li-right"><a href="{% url 'login'  %}">login</a></li>
+    <li id="li-right"><p style="color: white;">Hello!</p></li>
+  {% endif %}
+  
+</ul>
+{% block body-block %} {% endblock %}
+</body>
+</html>
+
+
