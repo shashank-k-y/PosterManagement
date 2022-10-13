@@ -14,7 +14,7 @@ from users import forms
 
 # Create your views here.
 
-@login_required(login_url='accounts/login')
+@login_required()
 def index(request):
     template = loader.get_template('users/index.html')
     context = {
@@ -98,4 +98,4 @@ def profile(request):
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'users/change_password.html'
     success_message = "Successfully Changed Your Password"
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')

@@ -12,5 +12,6 @@ urlpatterns = [
     path(
         'password-change/', views.ChangePasswordView.as_view(), 
         name='password_change'
-    )
+    ),
+    # path('index/', RedirectView.as_view(url='home'), name='index'),
 ]

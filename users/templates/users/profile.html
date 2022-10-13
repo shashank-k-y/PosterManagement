@@ -32,9 +32,9 @@
                 <strong>{{ value }}</strong>
             {% endfor %}
         {% endif %}
-        <p>{{form.username.label}}</p>
+        <p style="font-weight: bold;">{{form.username.label}}</p>
             {{ form.username }}
-        <p>{{form.email.label}}</p>
+        <p style="font-weight: bold;">{{form.email.label}}</p>
             {{ form.email }}
         {% for message in messages %}
             <p id="message-{{ message.tags }}">{{ message }}</p>

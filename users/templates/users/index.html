@@ -1,6 +1,9 @@
 {% extends 'users/base.html' %}
 
 {% block body-block %}
+{% for message in messages %}
+        <p id="message-{{ message.tags }}">{{ message }}</p>
+{% endfor %}
 <div id="div1">
     <h1>{{ greetings }}</h1>
     {% if strings %}
