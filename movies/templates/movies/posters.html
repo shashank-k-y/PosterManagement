@@ -1,0 +1,59 @@
+{% extends 'users/base.html' %}
+
+{% block body-block %}
+{% for message in messages %}
+        <p id="message-{{ message.tags }}">{{ message }}</p>
+{% endfor %}
+<div class="jumbotron jumbotron-fluid">
+  <div style="justify-content: center;" class="container">
+    <h1 class="display-4">Wellcome {{request.user}}</h1>
+    {% if not user_uploaded_posters %}
+      <p class="lead">Looks like you have not upoaded any posters so far.</p>
+      <a href="{% url 'list' %}" class="col-md-4 btn btn-dark">Upload Poster</a>
+    {% else %}
+    <p class="lead">Posters that you have uploaded so far.</p>
+  </div>
+</div>
+{% endif %}
+<hr>
+
+<div class="row">
+  {% for poster in user_uploaded_posters %}
+  <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ poster.image.url }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ poster.name}}</h5>
+        <p class="card-text">{{ poster.description }}</p>
+        <p class="card-text">uploaded by {{ poster.uploader }}</p>
+        <a href="{% url 'image' poster.id  %}" class="col-md-12 btn btn-dark">View Poster</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+  <div style="justify-content: center;" class="container">
+    <p class="display-4">Posters you can access.</p>
+    {% if not all_posters %}
+    <p class="lead">you dont have access to any posters.</p>
+    {% endif %}
+  </div>
+</div>
+<hr>
+
+
+<div class="row">
+  {% for poster in all_posters %}
+  <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ poster.image.url }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ poster.name}}</h5>
+        <p class="card-text">{{ poster.description }}</p>
+        <p class="card-text">uploaded by {{ poster.uploader }}</p>
+        <a href="{% url 'image' poster.id  %}" class="col-md-12 btn btn-dark">View Poster</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -11,7 +11,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ movie.name}}</h5>
           <p class="card-text">{{ movie.description }}</p>
-          <a href="{% url 'image' movie.id  %}" class="col-md-12 btn btn-dark">View</a>
+          <a href="{% url 'upload-poster' movie.id  %}" class="col-md-12 btn btn-dark">Upload Poster</a>
         </div>
       </div>
     {% endfor %}
