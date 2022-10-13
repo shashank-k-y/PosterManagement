@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+
+{% block body-block %}
+{% for message in messages %}
+        <p id="message-{{ message.tags }}">{{ message }}</p>
+{% endfor %}
+    <div class="card">
+        <img class="card-img-top" src="{{ movie.image.url }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 style="align-self: center;" class="card-title">{{ movie.name}}</h5>
+          <p class="card-text">{{ movie.description }}</p>
+        </div>
+      </div>
+</div>
+{% endblock %}

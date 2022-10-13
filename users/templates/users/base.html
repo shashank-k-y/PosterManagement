@@ -61,6 +61,7 @@ li a:hover {
 <ul id="ul1">
   <li id="li1"><a class="active" href="{% url 'home'  %}">Home</a></li>
   <li id="li1"><a href="{% url 'profile'  %}">Profile</a></li>
+  <li id="li1"><a href="{% url 'list'  %}">Movies</a></li>
   <li id="li-right"><a href="{% url 'staff'  %}">admin?</a></li>
   {% if request.user.is_authenticated %}
     <li id="li-right"><a href="{% url 'logout'  %}">logout</a></li>
