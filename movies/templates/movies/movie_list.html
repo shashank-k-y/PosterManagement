@@ -11,9 +11,15 @@
         <div class="card-body">
           <h5 class="card-title">{{ movie.name}}</h5>
           <p class="card-text">{{ movie.description }}</p>
-          <a href="{% url 'upload-poster' movie.id  %}" class="col-md-12 btn btn-dark">Upload Poster</a>
         </div>
       </div>
     {% endfor %}
 </div>
+
+
+<div style="padding-top: 5%;">
+    <h5 class="card-header">You can upload posters here for your favorite movies.</h5>
+        <a href="{% url 'upload-poster' %}" class="col-md-2 btn btn-dark">Upload Poster</a>
+</div>
+
 {% endblock %}

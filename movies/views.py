@@ -26,14 +26,17 @@ def movie_list_view(request):
 def image_view(request, pk):
     if request.method == 'GET':
         template = loader.get_template('movies/image_view.html')
-        movie = None
+        poster = None
         try:
-            movie = models.Poster.objects.get(id=pk)
+            poster = models.Poster.objects.get(id=pk)
         except ObjectDoesNotExist:
             messages.info(request, "No movies to display")
 
+        if request.user not in poster.permitted_viewers.all() and poster not in request.user.posters.all(): # noqa
+            messages.info(request, "you dont have access to this Image.")
+
         context = {
-            'movie': movie,
+            'poster': poster,
         }
     return HttpResponse(template.render(context, request))
 
@@ -51,7 +54,7 @@ def index(request):
 
 
 @login_required
-def upload_poster(request, movie_id):
+def upload_poster(request):
     if request.method == 'POST':
         form = forms.UploadPosterForm(request.POST, request.FILES)
 
@@ -62,9 +65,5 @@ def upload_poster(request, movie_id):
             return redirect(to='home')
     else:
         form = forms.UploadPosterForm()
-    try:
-        movie = models.Movie.objects.get(id=movie_id)
-    except ObjectDoesNotExist:
-        messages.info("Movie does not exist")
-    context = {'form': form, 'movie': movie}
+    context = {'form': form}
     return render(request, 'movies/upload_poster.html', context=context)

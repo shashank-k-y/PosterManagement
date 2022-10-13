@@ -9,7 +9,6 @@
     <h1 class="display-4">Wellcome {{request.user}}</h1>
     {% if not user_uploaded_posters %}
       <p class="lead">Looks like you have not upoaded any posters so far.</p>
-      <a href="{% url 'list' %}" class="col-md-4 btn btn-dark">Upload Poster</a>
     {% else %}
     <p class="lead">Posters that you have uploaded so far.</p>
   </div>
@@ -31,6 +30,9 @@
   {% endfor %}
 </div>
 
+<div style="padding-top: 5%;">
+  <a href="{% url 'upload-poster' %}" class="col-md-4 btn btn-dark">Upload Poster</a>
+</div>
 <div class="jumbotron jumbotron-fluid">
   <div style="justify-content: center;" class="container">
     <p class="display-4">Posters you can access.</p>
