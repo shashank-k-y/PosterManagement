@@ -67,3 +67,16 @@ def upload_poster(request):
         form = forms.UploadPosterForm()
     context = {'form': form}
     return render(request, 'movies/upload_poster.html', context=context)
+
+@login_required
+def add_movie(request):
+    if request.method == 'POST':
+        form = forms.AddMovieForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect(to='list')
+    else:
+        form = forms.AddMovieForm()
+    context = {'form': form}
+    return render(request, 'movies/add_movie.html', context=context)

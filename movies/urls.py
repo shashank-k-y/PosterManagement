@@ -9,5 +9,6 @@ urlpatterns = [
         'upload-poster/',
         views.upload_poster,
         name="upload-poster"
-    )
+    ),
+    path('add/', views.add_movie, name='add')
 ]

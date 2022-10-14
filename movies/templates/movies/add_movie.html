@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+
+{% block body-block %}
+<div id="div1">
+<form method = "post" enctype="multipart/form-data">
+    <h2>Upload your poster here</h2>
+    {% csrf_token %}
+    {% for field in form %}
+        <p>{{ field.errors }}</p>
+        <p style="font-weight: bold;">{{ field.label }} {{ field }}</p>
+        {% if field.help_text %}
+            <p>{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}
+    <button type="submit">Upload</button>
+</form>
+</div>
+{% endblock %}

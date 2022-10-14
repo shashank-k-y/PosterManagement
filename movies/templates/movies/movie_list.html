@@ -16,10 +16,17 @@
     {% endfor %}
 </div>
 
+<di class="row">
+  <div class="col" style="padding-top: 5%;">
+      <h5 class="card-header">You can upload posters here for your favorite movies.</h5>
+          <a href="{% url 'upload-poster' %}" class="col-md-4 btn btn-dark">Upload Poster</a>
+  </div>
 
-<div style="padding-top: 5%;">
-    <h5 class="card-header">You can upload posters here for your favorite movies.</h5>
-        <a href="{% url 'upload-poster' %}" class="col-md-2 btn btn-dark">Upload Poster</a>
+  <div class="col" style="padding-top: 5%;">
+    <h5 class="card-header">You can add movie Here.</h5>
+        <a href="{% url 'add' %}" class="col-md-4 btn btn-dark">add Movie</a>
+  </div>
+
 </div>
 
 {% endblock %}
