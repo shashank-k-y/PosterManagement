@@ -8,6 +8,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 
 from users import forms
+from commons.emqx_client import publish
 
 
 def register(request):
@@ -24,6 +25,7 @@ def register(request):
                 request=request,
                 message=f"account created successfully for {username} !"
             )
+            publish.run(message=f"{request.user.username} registered.")
             return redirect('login')
 
     context = {
@@ -46,6 +48,7 @@ def login_page(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user=user)
+                publish.run(message=f"{request.user.username} logged in.")
                 return redirect('home')
             else:
                 messages.info(
@@ -59,7 +62,9 @@ def login_page(request):
 
 
 def logout_request(request):
+    username = request.user.username
     logout(request)
+    publish.run(message=f"{username} logged out.")
     return redirect('login')
 
 
