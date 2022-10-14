@@ -1,17 +1,17 @@
-# python3.8
-
 import random
+
+from django.conf import settings
 
 from paho.mqtt import client as mqtt_client
 
 
-broker = 'k68264b0-internet-facing-0c1bd010361f4284.elb.ap-south-1.amazonaws.com'
+broker = settings.MQTT_BROKER
 port = 1883
 topic = "PosterManagement"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
-username = 'djangoemqx'
-password = 'hasher088'
+username = settings.MQTT_USERNAME
+password = settings.MQTT_PASSWORD
 
 
 def connect_mqtt() -> mqtt_client:

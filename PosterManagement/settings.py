@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9m5j&f=h2x8#^^up0zca@%rmrqt06%7(uwelu)@drwhz_1!h#y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -131,3 +131,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MQTT_BROKER = 'k68264b0-internet-facing-0c1bd010361f4284.elb.ap-south-1.amazonaws.com'
+MQTT_USERNAME = "djangoemqx"
+MQTT_PASSWORD = "hasher088"
