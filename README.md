@@ -7,6 +7,7 @@ Url: http://ec2-3-111-186-37.ap-south-1.compute.amazonaws.com:8000/home
     2.user profile updating 
     3.change password
     4.Upload Poster of your favorite movie
+    5.view the poster
     
 ### admin contols:
     1. CRUD on all tables. http://ec2-3-111-186-37.ap-south-1.compute.amazonaws.com:8000/admin/
@@ -14,5 +15,9 @@ Url: http://ec2-3-111-186-37.ap-south-1.compute.amazonaws.com:8000/home
     3. assign permission for user to access Posters. http://ec2-3-111-186-37.ap-south-1.compute.amazonaws.com:8000/admin/movies/poster/
     
 
-## for EMQX credentials and admin credentials please contact me Cheers 🍻...
+### For EMQX credentials and admin credentials please contact me on https://github.com/shashank-k-y   
+
+
+
+Cheers 🍻...
 
