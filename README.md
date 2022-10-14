@@ -14,4 +14,5 @@ Url: http://ec2-3-111-186-37.ap-south-1.compute.amazonaws.com:8000/home
     3. assign permission for user to access Posters. http://ec2-3-111-186-37.ap-south-1.compute.amazonaws.com:8000/admin/movies/poster/
     
 
-## for admin credentials please contact me Cheers 🍻
+## for EMQX credentials and admin credentials please contact me Cheers 🍻...
+
